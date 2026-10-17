@@ -1,490 +1,70 @@
-# Fluid Hifi Mini
+<p align="center">
+  <img src="./assets/captain-banner.png" alt="Captain — shipbuilding-inspired CAD blueprint of a vessel and developer tooling" width="100%" />
+</p>
 
-Fluid Hifi Mini is an Electron + React desktop client for controlling the Crispy Disco / Fluid Hifi audio engine. It provides a compact mini-player, a jukebox-style browser view, playback controls, queue visibility, volume control, drag-to-seek, and a local file browser that supports regular folders and symbolic-link media folders.
+<h1 align="center">Captain</h1>
+<p align="center"><strong>Build the ship. Equip the crew. Launch with confidence.</strong></p>
+<p align="center">A modular toolkit for orchestrating software builds, packaging, setup, and deployment workflows.</p>
 
-The app is designed as a decoupled client: the UI does not own playback directly. It talks to the backend audio service over HTTP through the Electron main process and keeps the interface synchronized by polling the playback snapshot endpoint.
-
----
-
-## Features
-
-### Mini Mode
-
-- Compact playback view
-- Current artist, album, and track title display
-- Play / pause / stop controls
-- Next / previous track controls
-- Repeat and shuffle controls
-- Volume slider with drag support
-- Track progress display
-- Drag-to-seek progress bar
-- Space bar shortcut for play / pause
-- Frameless Electron window controls
-
-### Jukebox Mode
-
-- Larger playback and browsing layout
-- Backend player queue display
-- File browser / library view toggle
-- Playback controls shared with mini mode
-- Current track details and progress
-- Styled jukebox scrollbars
-- Designed to support future database-driven library APIs
-
-### File Browser
-
-- Browse local folders through Electron / Node.js
-- Open media files through native dialogs
-- Open playlist files
-- Remember last opened directory
-- Supports symbolic-link folders as directories
-- Select files for playback or queueing
-- Play Selected plays the latest selected audio file
-- Queue Selected queues multiple selected audio files
-- Double-click an audio file to play it immediately
-- Double-click a directory to open it
-- Clear/reset selections and imported playlists
-- Audio and playlist file type detection
+<p align="center">
+  <a href="https://github.com/captain-cli/captain">Captain</a> ·
+  <a href="https://github.com/captain-cli/captain-core">Core</a> ·
+  <a href="https://github.com/captain-cli/embark">Embark</a> ·
+  <a href="https://github.com/captain-cli/captains-hook">Captain's Hook</a>
+</p>
 
 ---
 
-## Tech Stack
+## The shipyard
 
-- Electron
-- React
-- Vite
-- Node.js
-- Lucide React
-- Crispy Disco / Fluid Hifi C++ BASS audio backend
+Software delivery is more than compiling source code. It takes coordination: preparing workspaces, validating configuration, staging artifacts, assembling packages, and managing the transitions between each step.
 
----
+**Captain** brings those jobs together as a collection of focused, composable tools. Each component has a responsibility; together, they form an engineering workflow from source to ship.
 
-## Project Structure
+| Stage | Responsibility | Project |
+|:--|:--|:--|
+| **Command** | Coordinate developer workflows | [Captain](https://github.com/captain-cli/captain) |
+| **Foundation** | Shared orchestration capabilities | [Captain Core](https://github.com/captain-cli/captain-core) |
+| **Prepare** | Bootstrap and setup workflows | [Captain's Hook](https://github.com/captain-cli/captains-hook) |
+| **Stage** | Prepare build artifacts for packaging | [Stager](https://github.com/captain-cli/stager) |
+| **Equip** | Define and manage application/package configuration | [Outfit](https://github.com/captain-cli/outfit) · [Outfit Registry](https://github.com/captain-cli/outfit-registry) |
+| **Package** | Assemble native Linux packages | [Embark](https://github.com/captain-cli/embark) |
+| **Support** | Specialized generation and development utilities | [SchemaWright](https://github.com/captain-cli/schemawright) · [ServiceWright](https://github.com/captain-cli/servicewright) · [Dockhand](https://github.com/captain-cli/dockhand) |
 
-```text
-fluid-hifi-mini-preview/
-├── electron/
-│   ├── main.cjs
-│   └── preload.cjs
-├── src/
-│   ├── App.jsx
-│   ├── App.css
-│   ├── components/
-│   │   ├── ControlStrip.jsx
-│   │   ├── FileBrowser.jsx
-│   │   ├── JukeboxMode.jsx
-│   │   ├── MiniMode.jsx
-│   │   ├── PlaybackModes.jsx
-│   │   ├── ProgressBar.jsx
-│   │   ├── TrayPreview.jsx
-│   │   └── WindowControls.jsx
-│   ├── services/
-│   │   └── crispyAudioClient.js
-│   └── state/
-│       └── playerStore.js
-├── package.json
-└── README.md
-```
+## Meet the crew
 
----
+<table>
+  <tr>
+    <td width="33%" align="center" valign="top">
+      <a href="https://github.com/captain-cli/captain"><img src="./assets/captain-cli-card.png" alt="Captain command-line tooling blueprint graphic" width="100%" /></a><br />
+      <strong>Captain</strong><br />
+      The orchestration layer that brings tools and workflows together.
+    </td>
+    <td width="33%" align="center" valign="top">
+      <a href="https://github.com/captain-cli/embark"><img src="./assets/embark-card.png" alt="Embark packaging crane blueprint graphic" width="100%" /></a><br />
+      <strong>Embark</strong><br />
+      Native Linux packaging for Debian and RPM-oriented delivery.
+    </td>
+    <td width="33%" align="center" valign="top">
+      <a href="https://github.com/captain-cli/captains-hook"><img src="./assets/captains-hook-card.png" alt="Captain's Hook automation blueprint graphic" width="100%" /></a><br />
+      <strong>Captain's Hook</strong><br />
+      Bootstrap, integration, and automation support.
+    </td>
+  </tr>
+</table>
 
-## Requirements
+## Design philosophy
 
-- Node.js
-- npm
-- Electron runtime dependencies for your OS
-- Running Crispy Disco audio backend service
-- Access to the backend audio HTTP port
+- **One crew, clear responsibilities.** Keep modules focused and interoperable.
+- **Repeatable by design.** Prefer documented, reproducible operations over one-off commands.
+- **Use the platform.** Lean on native Linux package and service conventions where appropriate.
+- **From local development to delivery.** Treat setup, staging, packaging, and deployment as connected engineering concerns.
+- **Build for real workloads.** Let practical deployment scenarios drive the toolchain.
 
-The backend audio service must be running before the UI can control playback.
+## Explore the projects
 
----
-
-## Installation
-
-```bash
-npm install
-```
-
-Do not commit `node_modules/`. This repo should ignore dependency and build output folders.
+Browse the [organization repositories](https://github.com/orgs/captain-cli/repositories) for implementation details, current development status, and repository-specific instructions. The ecosystem is under active development; consult individual repositories before relying on a feature or package for production use.
 
 ---
 
-## Development
-
-Start the Electron/Vite development environment:
-
-```bash
-npm run electron:dev
-```
-
-If the Electron preload or main process changes, do a hard restart:
-
-```bash
-pkill -9 -f electron
-pkill -9 -f vite
-npm run electron:dev
-```
-
----
-
-## Configuration
-
-The frontend audio client defaults to:
-
-```text
-http://<current-host>:8080
-```
-
-Override the backend audio URL with:
-
-```bash
-VITE_AUDIO_HTTP_BASE_URL=http://192.168.1.245:3005 npm run electron:dev
-```
-
-Use the correct host and port for the Crispy Disco audio backend.
-
----
-
-## Electron Bridge
-
-The renderer accesses backend functionality through:
-
-```js
-window.fluidHifi
-```
-
-Useful DevTools checks:
-
-```js
-window.fluidHifi
-Object.keys(window.fluidHifi.audio)
-await window.fluidHifi.audio.getPlaybackSnapshot()
-```
-
-Examples:
-
-```js
-await window.fluidHifi.audio.setVolume(40)
-await window.fluidHifi.audio.seekPlayback(90)
-await window.fluidHifi.audio.getPlayerQueue()
-```
-
-If a method is missing after editing `preload.cjs`, hard restart Electron.
-
----
-
-## Playback Snapshot
-
-The UI is synchronized from:
-
-```http
-GET /getPlaybackSnapshot
-```
-
-Expected response shape:
-
-```json
-{
-  "state": "playing",
-  "isPlaying": true,
-  "isPaused": false,
-  "isStopped": false,
-  "bassActiveCode": 1,
-  "artist": "Aaliyah",
-  "album": "One in a Million",
-  "title": "Hot Like Fire",
-  "duration": 263.27,
-  "position": 35.75,
-  "remaining": 227.52,
-  "progressPercent": 13.58,
-  "volume": 25,
-  "muted": false,
-  "repeatState": false,
-  "repeatStyle": 0,
-  "repeatMode": "off",
-  "shuffleState": false,
-  "shuffleStyle": 0,
-  "shuffleMode": "off",
-  "playerQueueMode": 0,
-  "playMode": "normal"
-}
-```
-
-The UI treats this endpoint as the source of truth for playback state, track metadata, timer/progress, volume/mute, repeat mode, shuffle mode, and player mode.
-
----
-
-## Command-Line Backend Testing
-
-Replace host and port as needed.
-
-### Snapshot
-
-```bash
-curl --max-time 2 -s http://192.168.1.245:3005/getPlaybackSnapshot | jq
-```
-
-### Play File
-
-```bash
-curl -i -X POST http://192.168.1.245:3005/playFile \
-  -H "Content-Type: application/json" \
-  -d '{"File":"/home/lahjeq/Music/Phil Collins/Phil Collins - Do You Remember.mp3","ResetQueue":true}'
-```
-
-### Pause
-
-```bash
-curl -i -X POST http://192.168.1.245:3005/pausePlayback \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"PAUSE","PauseState":true}'
-```
-
-### Resume
-
-```bash
-curl -i -X POST http://192.168.1.245:3005/pausePlayback \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"PAUSE","PauseState":false}'
-```
-
-### Stop
-
-```bash
-curl -i -X POST http://192.168.1.245:3005/stopPlayback \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"STOP","PlaybackRunning":false}'
-```
-
-### Seek
-
-```bash
-curl -i -X POST http://192.168.1.245:3005/seekPlayback \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"SEEKPLAYBACK","PositionSeconds":60}'
-```
-
-Verify seek:
-
-```bash
-curl --max-time 2 -s http://192.168.1.245:3005/getPlaybackSnapshot \
-  | jq '.state, .position, .duration, .progressPercent'
-```
-
-### Set Volume
-
-```bash
-curl -i -X POST http://192.168.1.245:3005/setVolume \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"SETVOLUME","Volume":40}'
-```
-
-### Mute / Unmute
-
-```bash
-curl -i -X POST http://192.168.1.245:3005/setMuteState \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"MUTE","MuteState":true}'
-
-curl -i -X POST http://192.168.1.245:3005/setMuteState \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"MUTE","MuteState":false}'
-```
-
-### Repeat Modes
-
-```bash
-# Off
-curl -i -X POST http://192.168.1.245:3005/setRepeatStyle \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"REPEATSTYLE","RepeatStyle":0}'
-
-# Repeat one
-curl -i -X POST http://192.168.1.245:3005/setRepeatStyle \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"REPEATSTYLE","RepeatStyle":1}'
-
-# Repeat all
-curl -i -X POST http://192.168.1.245:3005/setRepeatStyle \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"REPEATSTYLE","RepeatStyle":2}'
-```
-
-### Shuffle Modes
-
-```bash
-# Off
-curl -i -X POST http://192.168.1.245:3005/setShuffleStyle \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"SHUFFLESTYLE","ShuffleStyle":0}'
-
-# Legacy
-curl -i -X POST http://192.168.1.245:3005/setShuffleStyle \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"SHUFFLESTYLE","ShuffleStyle":1}'
-
-# No repeat
-curl -i -X POST http://192.168.1.245:3005/setShuffleStyle \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"SHUFFLESTYLE","ShuffleStyle":2}'
-```
-
-### Queue
-
-```bash
-# Get queue
-curl --max-time 2 -s http://192.168.1.245:3005/getTracksInPlayerQueue | jq
-
-# Add one track
-curl -i -X POST http://192.168.1.245:3005/addTrackToPlayerQueue \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"ADDFILETOPLAYERQUEUE","FilePath":"/path/to/song.mp3"}'
-
-# Add multiple tracks
-curl -i -X POST http://192.168.1.245:3005/addTracksToPlayerQueue \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"ADDTRACKSTOQUEUE","Tracks":["/path/to/song-1.mp3","/path/to/song-2.mp3"]}'
-
-# Clear queue
-curl -i -X POST http://192.168.1.245:3005/clearPlayerQueue \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"CLEARPLAYERQUEUE"}'
-```
-
-### Next / Previous Track
-
-```bash
-curl -i -X POST http://192.168.1.245:3005/skipTrack \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"SKIPTRACK"}'
-
-curl -i -X POST http://192.168.1.245:3005/previousTrack \
-  -H "Content-Type: application/json" \
-  -d '{"Command":"PREVIOUSTRACK"}'
-```
-
----
-
-## Common Troubleshooting
-
-### `window.fluidHifi.audio.someMethod is not a function`
-
-The preload bridge is stale or missing a method.
-
-```bash
-pkill -9 -f electron
-pkill -9 -f vite
-npm run electron:dev
-```
-
-Then check:
-
-```js
-Object.keys(window.fluidHifi.audio)
-```
-
-### Progress bar moves but title does not update
-
-Check snapshot metadata:
-
-```bash
-curl --max-time 2 -s http://192.168.1.245:3005/getPlaybackSnapshot | jq '.artist, .album, .title'
-```
-
-If metadata is correct in snapshot but wrong in UI, inspect reducer hydration in `playerStore.js`.
-
-### Volume snaps back to zero
-
-Check snapshot volume:
-
-```bash
-curl --max-time 2 -s http://192.168.1.245:3005/getPlaybackSnapshot | jq '.volume, .muted'
-```
-
-Volume should be a sane `0..100` number.
-
-### Symlink folders show as files
-
-Electron file browsing must use `fs.lstat()` plus `fs.stat()` for symbolic links:
-
-```js
-const linkStats = await fs.lstat(fullPath);
-
-if (linkStats.isSymbolicLink()) {
-  targetStats = await fs.stat(fullPath);
-}
-```
-
----
-
-## Git Notes
-
-The repository should ignore generated and dependency folders:
-
-```text
-node_modules/
-dist/
-build/
-release/
-.vite/
-```
-
-Useful checks:
-
-```bash
-git check-ignore -v node_modules/electron/dist/electron
-git ls-files | grep '^node_modules/' | head
-git status
-```
-
----
-
-## Future Direction
-
-The next refactor target is the library API layer, not the audio command API layer.
-
-Planned library API areas:
-
-```text
-GET    /libraries
-GET    /libraries/:libraryId
-GET    /libraries/:libraryId/artists
-GET    /libraries/:libraryId/albums
-GET    /libraries/:libraryId/tracks
-GET    /libraries/:libraryId/items
-POST   /libraries/:libraryId/scan
-GET    /libraries/:libraryId/scan-status
-GET    /library/tracks/:trackId/playback
-GET    /library/albums/:albumId/playback
-```
-
-The goal is for the jukebox/database mode to consume library-aware media objects with:
-
-```text
-libraryId
-mediaType
-title/name
-filePath
-symbolicPath
-duration
-artist
-album
-scan status
-```
-
----
-
-## Current Stable Features
-
-- Snapshot polling
-- Timer/progress updates
-- Drag-to-seek
-- Play/pause synchronization
-- Volume bridge
-- Next/previous queue navigation
-- File browser Play Selected
-- Double-click file playback
-- Space-bar play/pause
-- Symlink directory browsing
-- Clear/reset selections
+<p align="center"><sub>Captain — engineer the journey from source to ship.</sub></p>
