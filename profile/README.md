@@ -10,7 +10,6 @@
   <a href="https://github.com/captain-cli/captain">Captain</a> ·
   <a href="https://github.com/captain-cli/captain-core">Core</a> ·
   <a href="https://github.com/captain-cli/embark">Embark</a> ·
-  <a href="https://github.com/captain-cli/captains-hook">Captain's Hook</a>
 </p>
 
 ---
@@ -25,7 +24,6 @@ Software delivery is more than compiling source code. It takes coordination: pre
 |:--|:--|:--|
 | **Command** | Coordinate developer workflows | [Captain](https://github.com/captain-cli/captain) |
 | **Foundation** | Shared orchestration capabilities | [Captain Core](https://github.com/captain-cli/captain-core) |
-| **Prepare** | Bootstrap and setup workflows | [Captain's Hook](https://github.com/captain-cli/captains-hook) |
 | **Stage** | Prepare build artifacts for packaging | [Stager](https://github.com/captain-cli/stager) |
 | **Equip** | Define and manage application/package configuration | [Outfit](https://github.com/captain-cli/outfit) · [Outfit Registry](https://github.com/captain-cli/outfit-registry) |
 | **Package** | Assemble native Linux packages | [Embark](https://github.com/captain-cli/embark) |
@@ -44,11 +42,6 @@ Software delivery is more than compiling source code. It takes coordination: pre
       <a href="https://github.com/captain-cli/embark"><img src="./assets/embark-card.png" alt="Embark packaging crane blueprint graphic" width="100%" /></a><br />
       <strong>Embark</strong><br />
       Native Linux packaging for Debian and RPM-oriented delivery.
-    </td>
-    <td width="33%" align="center" valign="top">
-      <a href="https://github.com/captain-cli/captains-hook"><img src="./assets/captains-hook-card.png" alt="Captain's Hook automation blueprint graphic" width="100%" /></a><br />
-      <strong>Captain's Hook</strong><br />
-      Bootstrap, integration, and automation support.
     </td>
   </tr>
 </table>
